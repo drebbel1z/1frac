@@ -21,7 +21,7 @@ dt_max = 10000
 
 injection_temp = 323.15
 
-mesh_size = 20
+# mesh_size = 20
 
 # NOTE: water weight used in BCs and peacmeans
 # because this is used in BCs, it should be reasonably physically correct,
@@ -546,11 +546,11 @@ water_weight = 9300 #9300 = density(T=490K,P=23MPa) * gravity(9.8m/s2)
 
 ##############################################################
 [Outputs]
-  console=true
-  file_base = 'outputs/results_nlmat_${mesh_size}m_orig'
-  csv = true
-  print_linear_residuals = false
-  wall_time_checkpoint = false
+  console=false
+  # file_base = 'outputs/results_nlmat_${mesh_size}m_orig'
+  # csv = true
+  # print_linear_residuals = false
+  # wall_time_checkpoint = false
 #  [exo]
 #   #  time_step_interval = 5
 #    type = Exodus
