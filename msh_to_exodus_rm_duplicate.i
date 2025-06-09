@@ -1,7 +1,7 @@
 # created by write_txt_for_3D_fracture_mesher.py
 # This is a MOOSE input file to remove duplicate elements from sidesets created by Andy's script
 # Run it using:  falcon-opt -i msh_to_exodus_rm_duplicate.i mesh_size=20 --mesh-only Case_B_Fractures_Local_20m.e
-mesh_size='20'
+mesh_size='5'
 [Mesh]
   [fmg]
     type = FileMeshGenerator

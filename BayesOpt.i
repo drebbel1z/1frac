@@ -4,8 +4,8 @@
 [Distributions]
   [fracture_aperture]
     type = Uniform
-    lower_bound = 1e-5
-    upper_bound = 4e-4
+    lower_bound = 1e-6
+    upper_bound = 9e-4
   []
 []
 
@@ -105,7 +105,7 @@
     type = MaternHalfIntCovariance
     signal_variance = 4.0
     noise_variance = 1e-6
-    length_factor = '10.0 10.0'
+    length_factor = '10.0'
     p=1
   []
 []

@@ -3,7 +3,7 @@
 # These are initial fracture properties
 # fracture permeability = roughness/12 * (aperature_o)^3 = 12e-3/12*(1e-4)^3 = 1e-15 m^-2
 # fracture porosity = aperature ~1e-4m
-frac_aperature = 6.62446191e-05
+frac_aperature = 8.37009143e-06
 frac_roughness = 12e-3
  
 
@@ -52,7 +52,7 @@ water_weight = 9300 #9300 = density(T=490K,P=23MPa) * gravity(9.8m/s2)
   # parallel_type=distributed
   [fmg]
    type = FileMeshGenerator
-   file = '1frac_Fractures_Local_20m_marked.e'
+   file = '1frac_Fractures_Local_5m_marked.e'
   []
 []
 

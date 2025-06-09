@@ -14,7 +14,7 @@
 
   [L2diff]
     type = ParsedPostprocessor
-    expression = 'relative_pressure_16a-p_in_1'
+    expression = '(relative_pressure_16a-p_in_1)^2'
     pp_names = 'relative_pressure_16a p_in_1'
   []
 
@@ -34,7 +34,7 @@
 [Functions]
   [log_inv_error]
     type = ParsedFunction
-    expression = 'log(1/((a)^2))'
+    expression = 'log(1/((a)))'
     symbol_names = 'a'
     symbol_values = 'L2diff'
   []

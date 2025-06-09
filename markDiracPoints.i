@@ -1,9 +1,9 @@
 case_name="1frac"
-mesh_size="20"
+mesh_size="5"
 [Mesh]
   [fmg]
     type = FileMeshGenerator
-    file = '1frac_rm_duplicate.e'
+    file = 'msh_to_exodus_rm_duplicate_in.e'
   []
   add_subdomain_ids = '2000 3000' #2000=injection subdomain; 3000=production subdomain
 []
@@ -15,11 +15,11 @@ mesh_size="20"
 [VectorPostprocessors]
   [injection_points]
     type = CSVReaderVectorPostprocessor
-    csv_file = "../simulation_inputs/injection_points.csv"
+    csv_file = "injection_points.csv"
   []
   [production_points]
     type = CSVReaderVectorPostprocessor
-    csv_file = "../simulation_inputs/production_points.csv"
+    csv_file = "production_points.csv"
   []
 []
 
