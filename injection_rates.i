@@ -1,7 +1,7 @@
 ####### INJECTION RATES AND POSTPROCESSORS
 # created by write_diracs_input.py
 
-inj_ratio_stage_1 = 0.05 #only getting 1/20th of flow so assuming 20 fractures
+inj_ratio_stage_1 = 0.25 #only getting 1/20th of flow so assuming 20 fractures
 
 [Postprocessors]
   [mass_flux_src_stage_1]

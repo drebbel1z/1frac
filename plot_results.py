@@ -14,6 +14,7 @@ import re
 # low perm matrix
 # df = pd.read_csv("outputs/results.csv")
 df = pd.read_csv("outputs/results_nlmat_20m_orig.csv")
+# df2 = pd.read_csv("outputs/results_nlmat_5m_orig.csv")
 
 df_30day_exp_mass = pd.read_csv(
     "/Users/otchc/projects/FORGE_THM/th_dfn_circulation/field_data//16B_30day_experimental_output.csv"
@@ -193,6 +194,14 @@ for i, col in enumerate(p_in_columns):
         color=colors[i],
         label=col,
     )
+
+    # ax1.plot(
+    #     df2["time"] / 3600 / 24,
+    #     df2[col] / 1e6 * MPa_to_psi,
+    #     color=colors[i],
+    #     linestyle="--",
+    #     label=col,
+    # )
 ax1.plot(
     df_30day_exp_press["time_elapsed"] / 3600 / 24,
     df_30day_exp_press["16A WELLHEAD PSI (PSI)"],

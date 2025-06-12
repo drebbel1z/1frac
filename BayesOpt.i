@@ -5,7 +5,23 @@
   [fracture_aperture]
     type = Uniform
     lower_bound = 1e-6
-    upper_bound = 9e-4
+    upper_bound = 1e-3
+  []
+  [matrix_poro]
+    type = Uniform
+    lower_bound = 1e-6
+    upper_bound = 1e-3
+  []
+  [matrix_perm]
+    type = Uniform
+    lower_bound = 1e-16
+    upper_bound = 1e-14
+  []
+
+  [frac_roughness]
+    type = Uniform
+    lower_bound = 1e-3
+    upper_bound = 1e-1
   []
 []
 
@@ -20,13 +36,13 @@
 [Samplers]
   [sample]
     type = GenericActiveLearningSampler
-    distributions = 'fracture_aperture'
+    distributions = 'fracture_aperture matrix_poro matrix_perm frac_roughness'
     sorted_indices = 'conditional/sorted_indices'
-    num_parallel_proposals = 8
-    num_tries = 3000
+    num_parallel_proposals = 1
+    num_tries = 5000
     seed = 100
     execute_on = PRE_MULTIAPP_SETUP
-    initial_values = "2e-4"
+    initial_values = "2e-4 2e-4 2e-4 2e-4"
   []
 []
 
@@ -53,7 +69,7 @@
     type = MultiAppSamplerControl
     multi_app = sub
     sampler = sample
-    param_names = 'frac_aperature'
+    param_names = 'frac_aperature matrix_poro matrix_perm frac_roughness'
   []
 []
 
@@ -105,14 +121,14 @@
     type = MaternHalfIntCovariance
     signal_variance = 4.0
     noise_variance = 1e-6
-    length_factor = '10.0'
+    length_factor = '10.0 10.0 10.0 10'
     p=1
   []
 []
 
 [Executioner]
   type = Transient
-  num_steps = 30
+  num_steps = 100
 []
 
 [Outputs]

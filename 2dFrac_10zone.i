@@ -3,19 +3,24 @@
 # These are initial fracture properties
 # fracture permeability = roughness/12 * (aperature_o)^3 = 12e-3/12*(1e-4)^3 = 1e-15 m^-2
 # fracture porosity = aperature ~1e-4m
-frac_aperature = 8.37009143e-06
+frac_aperature= 0.0001765759
 frac_roughness = 12e-3
  
 
 # These should just be pass through, so high permeability, porosity ~1
 inj_perm = 1.0e-9 #these are from the fracture volumetric fracture properties
 inj_poro = .9
-matrix_perm = 1.0e-16
-matrix_poro = 2.0e-4
 
-biot_coeff = 0.47
+# these are all matrix properties to fit
+matrix_perm = 1.0e-16  #1e-14 to 1e-16 you want good sample from log space
+matrix_poro = 2.0e-4   #
+# bulk_modulus= 5.4e10    # this should be phyiscal for granite which I think this is.  But maybe 1e10 to 1e11
 
-endTime = 302400 #86400 # 1day   # 2592000 # 30 days
+biot_coeff = 0.47  # don't know what this means.   Look at andys porous flow module notes 
+# biot_coeff_prime = ${biot_coeff} # don't know what this means. Could be negative for fractures???
+
+
+endTime = 864000 # 302400 3.5days #86400 # 1day   # 2592000 # 30 days
 initial_dt = 100
 dt_max = 10000
 
@@ -52,7 +57,7 @@ water_weight = 9300 #9300 = density(T=490K,P=23MPa) * gravity(9.8m/s2)
   # parallel_type=distributed
   [fmg]
    type = FileMeshGenerator
-   file = '1frac_Fractures_Local_5m_marked.e'
+   file = '1frac_Fractures_Local_20m_marked.e'
   []
 []
 
@@ -262,7 +267,8 @@ water_weight = 9300 #9300 = density(T=490K,P=23MPa) * gravity(9.8m/s2)
   #   type = PorousFlowPorosity
   #   porosity_zero = ${matrix_poro}
   #   fluid = true
-  #   solid_bulk = 5.4e10
+  #   solid_bulk = ${bulk_modulus}
+  #   biot_coefficient_prime=${biot_coeff_prime}
   #   block = '1000'
   # []
   [permeability_matrix]
@@ -382,6 +388,8 @@ water_weight = 9300 #9300 = density(T=490K,P=23MPa) * gravity(9.8m/s2)
     bottom_p_or_t = insitu_pp_borehole
     SumQuantityUO = borehole_fluid_outflow_mass
     point_file = peaceman_production_points.txt
+    line_direction = '0 0 1'
+    line_length = 1.0
     function_of = pressure
     fluid_phase = 0
     unit_weight = '0 0 -${water_weight}'
@@ -395,6 +403,8 @@ water_weight = 9300 #9300 = density(T=490K,P=23MPa) * gravity(9.8m/s2)
     bottom_p_or_t = insitu_pp_borehole
     SumQuantityUO = borehole_prod_temperature
     point_file = peaceman_production_points.txt
+    line_direction = '0 0 1'
+    line_length = 1
     function_of = pressure
     fluid_phase = 0
     unit_weight = '0 0 -${water_weight}'
@@ -546,11 +556,12 @@ water_weight = 9300 #9300 = density(T=490K,P=23MPa) * gravity(9.8m/s2)
 
 ##############################################################
 [Outputs]
-  console=false
+  console=true
   # file_base = 'outputs/results_nlmat_${mesh_size}m_orig'
   # csv = true
-  # print_linear_residuals = false
-  # wall_time_checkpoint = false
+  print_linear_residuals = false
+  wall_time_checkpoint = false
+  # exodus=true
 #  [exo]
 #   #  time_step_interval = 5
 #    type = Exodus
