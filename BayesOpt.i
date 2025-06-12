@@ -17,12 +17,6 @@
     lower_bound = 1e-16
     upper_bound = 1e-14
   []
-
-  [frac_roughness]
-    type = Uniform
-    lower_bound = 1e-3
-    upper_bound = 1e-1
-  []
 []
 
 [ParallelAcquisition]
@@ -36,13 +30,13 @@
 [Samplers]
   [sample]
     type = GenericActiveLearningSampler
-    distributions = 'fracture_aperture matrix_poro matrix_perm frac_roughness'
+    distributions = 'fracture_aperture matrix_poro matrix_perm'
     sorted_indices = 'conditional/sorted_indices'
     num_parallel_proposals = 1
     num_tries = 5000
     seed = 100
     execute_on = PRE_MULTIAPP_SETUP
-    initial_values = "2e-4 2e-4 2e-4 2e-4"
+    initial_values = "2e-4 2e-4 2e-4"
   []
 []
 
@@ -69,7 +63,7 @@
     type = MultiAppSamplerControl
     multi_app = sub
     sampler = sample
-    param_names = 'frac_aperature matrix_poro matrix_perm frac_roughness'
+    param_names = 'frac_aperature matrix_poro matrix_perm'
   []
 []
 
@@ -121,7 +115,7 @@
     type = MaternHalfIntCovariance
     signal_variance = 4.0
     noise_variance = 1e-6
-    length_factor = '10.0 10.0 10.0 10'
+    length_factor = '10.0 10.0 10.0'
     p=1
   []
 []
