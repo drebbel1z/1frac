@@ -57,7 +57,7 @@ water_weight = 9300 #9300 = density(T=490K,P=23MPa) * gravity(9.8m/s2)
   # parallel_type=distributed
   [fmg]
    type = FileMeshGenerator
-   file = '1frac_Fractures_Local_20m_marked.e'
+   file = '1frac_Fractures_Local_5m_marked.e'
   []
 []
 
